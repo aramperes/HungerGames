@@ -19,11 +19,9 @@ public class PhaseManager {
     }
 
     public void setCurrentPhase(Phase currentPhase) {
-        if (getCurrentPhase()!=null) {
-            getCurrentPhase().endPhase();
-        }
         this.currentPhase = currentPhase;
         currentPhase.startPhase();
+        plugin.getLogger().info("[" + this.getClass().getSimpleName() + "] Started phase " + currentPhase.getDisplayName() + " (" + currentPhase.getClass().getSimpleName() + ").");
     }
 
 }
