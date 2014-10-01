@@ -1,5 +1,7 @@
 package me.momo.hungergames.game.phase;
 
+import org.bukkit.entity.Player;
+
 /**
  * Copyright MOMOTHEREAL (c) 2014.
  */
@@ -53,6 +55,18 @@ public interface Phase {
      * @return true if entities can move around.
      */
     public boolean canMove();
+
+    /**
+     * Launches when a player joins.
+     * @param player the player who joined.
+     */
+    public void playerJoin(Player player);
+
+    /**
+     * Launches when a player leaves.
+     * @param player the player who left.
+     */
+    public void playerLeave(Player player);
 
     /**
      * Starts the phase.
