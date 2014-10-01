@@ -3,6 +3,7 @@ package me.momo.hungergames;
 import me.momo.hungergames.game.PhaseManager;
 import me.momo.hungergames.game.event.PhaseListener;
 import me.momo.hungergames.game.phase.PhaseSettingUp;
+import me.momo.hungergames.game.time.PulseTimer;
 import org.bukkit.plugin.java.JavaPlugin;
 
 /**
@@ -14,6 +15,7 @@ public class Core extends JavaPlugin {
     @Override
     public void onEnable() {
         // Let's start some stuff here
+        startPulseTimer();
         registerListeners();
         phaseManager = new PhaseManager(this);
         phaseManager.setCurrentPhase(new PhaseSettingUp());
@@ -30,5 +32,9 @@ public class Core extends JavaPlugin {
 
     public static PhaseManager getPhaseManager() {
         return phaseManager;
+    }
+
+    public void startPulseTimer() {
+        this.getServer().getScheduler().runTaskTimer(this, new PulseTimer(), 20l, 20l);
     }
 }
