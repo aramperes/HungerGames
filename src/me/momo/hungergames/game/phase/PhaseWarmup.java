@@ -1,35 +1,34 @@
 package me.momo.hungergames.game.phase;
 
-import me.momo.hungergames.Core;
-import me.momo.hungergames.game.phase.Phase;
-
 /**
- * Copyright MOMOTHEREAL (c) 2014.
+ * Created by Momo in 10 2014.
  */
-public class PhaseSettingUp implements Phase {
+public class PhaseWarmup implements Phase {
+    int ticks = 0;
+
     @Override
     public int getId() {
-        return 0;
+        return 2;
     }
 
     @Override
     public String getDisplayName() {
-        return "Setting Up";
+        return "Warm-Up";
     }
 
     @Override
     public int getMaxTicks() {
-        return 0; // Unused
+        return 10;
     }
 
     @Override
     public int getTicks() {
-        return 0; // Unused
+        return ticks;
     }
 
     @Override
     public boolean isInfinite() {
-        return true;
+        return false;
     }
 
     @Override
@@ -44,22 +43,25 @@ public class PhaseSettingUp implements Phase {
 
     @Override
     public boolean canMove() {
-        return true;
+        return false;
     }
 
     @Override
     public void startPhase() {
-        // TODO: Load maps and stuff
-        endPhase();
+
     }
 
     @Override
     public void endPhase() {
-        Core.getPhaseManager().setCurrentPhase(new PhaseLobby());
+
     }
 
     @Override
     public void pulse() {
-        // Unused
+        if (ticks == getMaxTicks()) {
+            endPhase();
+        } else {
+            ticks++;
+        }
     }
 }

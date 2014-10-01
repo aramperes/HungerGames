@@ -25,4 +25,5 @@ public class PhaseManager {
         this.currentPhase = currentPhase;
         currentPhase.startPhase();
     }
+
 }
