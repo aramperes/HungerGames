@@ -43,6 +43,12 @@ public interface Phase {
     public boolean isPvP();
 
     /**
+     * Whether players can join the server or not during this phase.
+     * @return true if players can join during this phase.
+     */
+    public boolean canJoin();
+
+    /**
      * Whether entities can move around or not.
      * @return true if entities can move around.
      */

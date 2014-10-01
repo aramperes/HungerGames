@@ -37,6 +37,11 @@ public class PhaseSettingUp implements Phase {
     }
 
     @Override
+    public boolean canJoin() {
+        return false;
+    }
+
+    @Override
     public boolean canMove() {
         return true;
     }

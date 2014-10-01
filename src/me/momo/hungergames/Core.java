@@ -1,7 +1,7 @@
 package me.momo.hungergames;
 
 import me.momo.hungergames.game.PhaseManager;
-import me.momo.hungergames.game.PhaseSettingUp;
+import me.momo.hungergames.game.phase.PhaseSettingUp;
 import org.bukkit.plugin.java.JavaPlugin;
 
 /**
