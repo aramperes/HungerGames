@@ -1,4 +1,4 @@
-package me.momo.hungergames.game;
+package me.momo.hungergames.game.phase;
 
 /**
  * Copyright MOMOTHEREAL (c) 2014.
