@@ -2,6 +2,7 @@ package me.momo.hungergames.game.phase;
 
 import me.momo.hungergames.Core;
 import me.momo.hungergames.game.phase.Phase;
+import org.bukkit.entity.Player;
 
 /**
  * Copyright MOMOTHEREAL (c) 2014.
@@ -45,6 +46,16 @@ public class PhaseSettingUp implements Phase {
     @Override
     public boolean canMove() {
         return true;
+    }
+
+    @Override
+    public void playerJoin(Player player) {
+        // Unused
+    }
+
+    @Override
+    public void playerLeave(Player player) {
+        // Unused
     }
 
     @Override

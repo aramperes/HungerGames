@@ -1,5 +1,7 @@
 package me.momo.hungergames.game.phase;
 
+import org.bukkit.entity.Player;
+
 /**
  * Created by Momo in 10 2014.
  */
@@ -44,6 +46,16 @@ public class PhaseWarmup implements Phase {
     @Override
     public boolean canMove() {
         return false;
+    }
+
+    @Override
+    public void playerJoin(Player player) {
+        // Unused
+    }
+
+    @Override
+    public void playerLeave(Player player) {
+        // Unused
     }
 
     @Override

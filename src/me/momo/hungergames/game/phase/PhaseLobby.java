@@ -1,6 +1,7 @@
 package me.momo.hungergames.game.phase;
 
 import me.momo.hungergames.Core;
+import org.bukkit.entity.Player;
 
 /**
  * Copyright MOMOTHEREAL (c) 2014.
@@ -49,6 +50,16 @@ public class PhaseLobby implements Phase {
     @Override
     public boolean canMove() {
         return true;
+    }
+
+    @Override
+    public void playerJoin(Player player) {
+        // TODO: Join message
+    }
+
+    @Override
+    public void playerLeave(Player player) {
+        // TODO: Leave message
     }
 
     @Override
