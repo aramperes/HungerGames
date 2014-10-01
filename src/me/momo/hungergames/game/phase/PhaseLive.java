@@ -1,27 +1,25 @@
 package me.momo.hungergames.game.phase;
 
-import me.momo.hungergames.Core;
 import org.bukkit.entity.Player;
 
 /**
  * Created by Momo in 10 2014.
  */
-public class PhaseWarmup implements Phase {
+public class PhaseLive implements Phase {
     int ticks = 0;
-
     @Override
     public int getId() {
-        return 2;
+        return 3;
     }
 
     @Override
     public String getDisplayName() {
-        return "Warm-Up";
+        return "Live Game";
     }
 
     @Override
     public int getMaxTicks() {
-        return 10;
+        return 30 * 60;
     }
 
     @Override
@@ -36,27 +34,27 @@ public class PhaseWarmup implements Phase {
 
     @Override
     public boolean isPvP() {
-        return false;
+        return true;
     }
 
     @Override
     public boolean canJoin() {
-        return false;
+        return true;
     }
 
     @Override
     public boolean canMove() {
-        return false;
+        return true;
     }
 
     @Override
     public void playerJoin(Player player) {
-        // Unused
+        // TODO: Spectator
     }
 
     @Override
     public void playerLeave(Player player) {
-        // Unused
+        // TODO: Eliminate player if tribute
     }
 
     @Override
@@ -66,7 +64,7 @@ public class PhaseWarmup implements Phase {
 
     @Override
     public void endPhase() {
-        Core.getPhaseManager().setCurrentPhase(new PhaseLive());
+
     }
 
     @Override
@@ -74,7 +72,7 @@ public class PhaseWarmup implements Phase {
         if (ticks == getMaxTicks()) {
             endPhase();
         } else {
-            ticks++;
+            ticks--;
         }
     }
 }
