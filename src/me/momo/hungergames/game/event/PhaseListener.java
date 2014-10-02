@@ -16,7 +16,7 @@ public class PhaseListener implements Listener {
 
     @EventHandler
     public void onPlayerLogin(PlayerLoginEvent event) {
-        if (Core.getPhaseManager().getCurrentPhase()==null)
+        if (Core.getPhaseManager().getCurrentPhase() == null)
             return;
         if (!Core.getPhaseManager().getCurrentPhase().canJoin()) {
             event.disallow(PlayerLoginEvent.Result.KICK_OTHER, ChatColor.DARK_RED + "Sorry, but you cannot join during " + Core.getPhaseManager().getCurrentPhase().getDisplayName() + ".");
@@ -25,7 +25,7 @@ public class PhaseListener implements Listener {
 
     @EventHandler
     public void onPlayerJoin(PlayerJoinEvent event) {
-        if (Core.getPhaseManager().getCurrentPhase()==null)
+        if (Core.getPhaseManager().getCurrentPhase() == null)
             return;
         event.setJoinMessage(null);
         Core.getPhaseManager().getCurrentPhase().playerJoin(event.getPlayer());
@@ -33,7 +33,7 @@ public class PhaseListener implements Listener {
 
     @EventHandler
     public void onPlayerLeave(PlayerQuitEvent event) {
-        if (Core.getPhaseManager().getCurrentPhase()==null)
+        if (Core.getPhaseManager().getCurrentPhase() == null)
             return;
         event.setQuitMessage(null);
         Core.getPhaseManager().getCurrentPhase().playerLeave(event.getPlayer());
@@ -41,7 +41,7 @@ public class PhaseListener implements Listener {
 
     @EventHandler
     public void onPlayerMove(PlayerMoveEvent event) {
-        if (Core.getPhaseManager().getCurrentPhase()==null)
+        if (Core.getPhaseManager().getCurrentPhase() == null)
             return;
         if (!Core.getPhaseManager().getCurrentPhase().canMove())
             event.getPlayer().teleport(new Location
@@ -50,7 +50,7 @@ public class PhaseListener implements Listener {
 
     @EventHandler
     public void onEntityDamage(EntityDamageEvent event) {
-        if (Core.getPhaseManager().getCurrentPhase()==null)
+        if (Core.getPhaseManager().getCurrentPhase() == null)
             return;
         if (!Core.getPhaseManager().getCurrentPhase().isPvP())
             event.setCancelled(true);

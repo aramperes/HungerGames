@@ -17,10 +17,10 @@ public class CheatListener implements Listener {
 
     @EventHandler
     public void reachCheck(EntityDamageByEntityEvent event) {
-        if (event.getDamager().getType()== EntityType.PLAYER) {
-            Player player = (Player)event.getDamager();
+        if (event.getDamager().getType() == EntityType.PLAYER) {
+            Player player = (Player) event.getDamager();
 
-            if (player.getGameMode()== GameMode.CREATIVE)
+            if (player.getGameMode() == GameMode.CREATIVE)
                 return;
 
             if (event.getDamager().getLocation().distance(event.getEntity().getLocation()) > SimpleAntiCheat.getReachDistance()) {

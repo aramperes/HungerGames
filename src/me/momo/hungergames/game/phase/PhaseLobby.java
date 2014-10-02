@@ -8,6 +8,7 @@ import org.bukkit.entity.Player;
  */
 public class PhaseLobby implements Phase {
     int ticks = 0;
+
     @Override
     public int getId() {
         return 1;

@@ -7,8 +7,7 @@ public enum CheatType {
     SPEED(0, 1, "SpeedHacks"),
     FLIGHT(1, 3, "Flight"),
     SPAM(2, 1, "Spamming"),
-    REACH(3, 2, "Reach"),
-    ;
+    REACH(3, 2, "Reach"),;
 
     private int id;
     private int level;

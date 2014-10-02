@@ -7,6 +7,7 @@ import org.bukkit.entity.Player;
  */
 public class PhaseLive implements Phase {
     int ticks = 0;
+
     @Override
     public int getId() {
         return 3;
