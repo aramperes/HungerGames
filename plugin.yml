@@ -1,4 +1,5 @@
 name: HungerGames
 version: LOCAL-SNAPSHOT
+main: me.momo.hungergames.Core
 author: Momo
 commands:
