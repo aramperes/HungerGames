@@ -3,7 +3,7 @@ package me.momo.hungergames.game.phase;
 import org.bukkit.entity.Player;
 
 /**
- * Copyright MOMOTHEREAL (c) 2014.
+ * Represents a single phase.
  */
 public interface Phase {
 

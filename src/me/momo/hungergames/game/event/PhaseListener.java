@@ -8,7 +8,7 @@ import org.bukkit.event.Listener;
 import org.bukkit.event.player.*;
 
 /**
- * Created by Momo in 10 2014.
+ * Contains generic methods to listen events for phases.
  */
 public class PhaseListener implements Listener {
 

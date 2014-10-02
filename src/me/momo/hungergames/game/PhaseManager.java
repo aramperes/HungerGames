@@ -4,7 +4,7 @@ import me.momo.hungergames.Core;
 import me.momo.hungergames.game.phase.Phase;
 
 /**
- * Copyright MOMOTHEREAL (c) 2014.
+ * Centralizes information and methods for phases.
  */
 public class PhaseManager {
     private Core plugin;

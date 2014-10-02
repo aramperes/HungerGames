@@ -7,7 +7,7 @@ import me.momo.hungergames.game.time.PulseTimer;
 import org.bukkit.plugin.java.JavaPlugin;
 
 /**
- * Copyright MOMOTHEREAL (c) 2014.
+ * Main class of the plugin.
  */
 public class Core extends JavaPlugin {
     static PhaseManager phaseManager;

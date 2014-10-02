@@ -4,7 +4,7 @@ import me.momo.hungergames.Core;
 import org.bukkit.entity.Player;
 
 /**
- * Copyright MOMOTHEREAL (c) 2014.
+ * Represents the Lobby phase (waiting for players/map vote)
  */
 public class PhaseLobby implements Phase {
     int ticks = 0;

@@ -5,7 +5,7 @@ import me.momo.hungergames.game.phase.Phase;
 import org.bukkit.entity.Player;
 
 /**
- * Copyright MOMOTHEREAL (c) 2014.
+ * Represents the SettingUp phase (Setting up maps)
  */
 public class PhaseSettingUp implements Phase {
     @Override

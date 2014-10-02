@@ -4,7 +4,7 @@ import me.momo.hungergames.Core;
 import org.bukkit.entity.Player;
 
 /**
- * Created by Momo in 10 2014.
+ * Represents the Warmup phase (transition between lobby and in-game).
  */
 public class PhaseWarmup implements Phase {
     int ticks = 0;

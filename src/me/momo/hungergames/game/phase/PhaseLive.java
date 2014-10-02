@@ -3,7 +3,7 @@ package me.momo.hungergames.game.phase;
 import org.bukkit.entity.Player;
 
 /**
- * Created by Momo in 10 2014.
+ * Represents the Live phase (in-game)
  */
 public class PhaseLive implements Phase {
     int ticks = 0;

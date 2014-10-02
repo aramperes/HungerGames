@@ -4,7 +4,7 @@ import me.momo.hungergames.Core;
 import org.bukkit.scheduler.BukkitRunnable;
 
 /**
- * Created by Momo in 10 2014.
+ * Represents the job for a single pulse (20 ticks)
  */
 public class PulseTimer extends BukkitRunnable {
     @Override
