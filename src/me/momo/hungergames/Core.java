@@ -1,6 +1,8 @@
 package me.momo.hungergames;
 
 import me.momo.hungergames.game.PhaseManager;
+import me.momo.hungergames.game.SimpleAntiCheat;
+import me.momo.hungergames.game.event.CheatListener;
 import me.momo.hungergames.game.event.PhaseListener;
 import me.momo.hungergames.game.phase.PhaseSettingUp;
 import me.momo.hungergames.game.time.PulseTimer;
@@ -11,6 +13,7 @@ import org.bukkit.plugin.java.JavaPlugin;
  */
 public class Core extends JavaPlugin {
     static PhaseManager phaseManager;
+    static SimpleAntiCheat antiCheat;
 
     @Override
     public void onEnable() {
@@ -19,6 +22,7 @@ public class Core extends JavaPlugin {
         registerListeners();
         phaseManager = new PhaseManager(this);
         phaseManager.setCurrentPhase(new PhaseSettingUp());
+        antiCheat = new SimpleAntiCheat(this);
     }
 
     @Override
@@ -26,8 +30,13 @@ public class Core extends JavaPlugin {
         // Let's end some stuff here
     }
 
+    public static SimpleAntiCheat getAntiCheat() {
+        return antiCheat;
+    }
+
     public void registerListeners() {
         this.getServer().getPluginManager().registerEvents(new PhaseListener(), this);
+        this.getServer().getPluginManager().registerEvents(new CheatListener(), this);
     }
 
     public static PhaseManager getPhaseManager() {
