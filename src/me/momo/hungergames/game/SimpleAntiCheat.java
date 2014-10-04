@@ -10,7 +10,7 @@ import org.bukkit.entity.Player;
  */
 public class SimpleAntiCheat {
     private Core core;
-    private static double reachDistance = 2d; // Testing! Should be 4.5
+    private static double reachDistance = 4.5d;
 
     public SimpleAntiCheat(Core core) {
         this.core = core;
