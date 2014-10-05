@@ -3,12 +3,15 @@ package me.momo.hungergames.game.event;
 import me.momo.hungergames.Core;
 import me.momo.hungergames.game.SimpleAntiCheat;
 import me.momo.hungergames.game.cheat.CheatType;
+import me.momo.hungergames.game.player.PlayerProfile;
 import org.bukkit.GameMode;
 import org.bukkit.entity.EntityType;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.entity.EntityDamageByEntityEvent;
+import org.bukkit.event.entity.EntityRegainHealthEvent;
+import sun.java2d.pipe.SpanShapeRenderer;
 
 /**
  * Contains events to listen for the Anti-Cheat class
@@ -27,6 +30,44 @@ public class CheatListener implements Listener {
                 Core.getAntiCheat().warnPlayer(player, CheatType.REACH);
                 event.setCancelled(true);
             }
+        }
+    }
+
+    @EventHandler
+    public void regenCheck(EntityRegainHealthEvent event) {
+        if (event.getEntityType() != EntityType.PLAYER)
+            return;
+
+        if (event.getRegainReason() != EntityRegainHealthEvent.RegainReason.SATIATED)
+            return;
+
+        Player player = (Player) event.getEntity(); // The player we are looking into
+        long time = System.currentTimeMillis(); // The current time on the server
+        long lastHeal = 0; // The last heal where the player regenerated
+        lastHeal = Core.getPlayerProfiles().get(player.getUniqueId()).getLastHeal();
+        long healTime = (time - lastHeal); // The difference between the last heal and the time.
+
+        if (lastHeal == -1) { // By default, a profile has a last heal of -1
+            lastHeal = time - (5 * 1000);
+        }
+
+        Core.getPlayerProfiles().get(player.getUniqueId()).setLastHeal(time); // We update the last heal
+
+        /*
+         * A check if the player is regenerating when it cannot because of the food level.
+         */
+        if (player.getFoodLevel() <= 17) {
+            Core.getAntiCheat().warnPlayer(player, CheatType.REGEN);
+            event.setCancelled(true);
+            return;
+        }
+         /*
+          * We check the difference of time between the last heal and the current time.
+          */
+        if (healTime < (SimpleAntiCheat.getRegenTimeBetweenHeals()) && (healTime != 0)) {
+            Core.getAntiCheat().warnPlayer(player, CheatType.REGEN);
+            event.setCancelled(true);
+            return;
         }
     }
 }
