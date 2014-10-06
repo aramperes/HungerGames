@@ -9,7 +9,7 @@ public enum CheatType {
     SPAM(2, 1, "Flooding"),
     REACH(3, 2, "Reach"),
     REGEN(4, 2, "Regen"),
-    FORCEFIELD(4, 2, "KillAura");
+    FORCEFIELD(5, 2, "KillAura");
 
     private int id;
     private int level;
