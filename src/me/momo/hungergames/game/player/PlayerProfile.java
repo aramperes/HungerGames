@@ -1,5 +1,6 @@
 package me.momo.hungergames.game.player;
 
+import me.momo.hungergames.game.SimpleAntiCheat;
 import me.momo.hungergames.game.cheat.CheatType;
 import org.bukkit.Bukkit;
 
@@ -77,7 +78,7 @@ public class PlayerProfile {
     }
 
     public void updateVL() {
-        if (violationLevel > 5) {
+        if (violationLevel > SimpleAntiCheat.getMaxVL()) {
             String cheatMessage = "";
             for (int i = 0; i < cheats.size(); i++) {
                 if (i != (cheats.size() - 1)) {
