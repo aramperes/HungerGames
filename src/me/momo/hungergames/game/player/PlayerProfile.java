@@ -15,7 +15,7 @@ public class PlayerProfile {
     private long lastHeal = -1;
     private long lastHit = -1;
     private long lastChat = -1;
-    private int violationLevel = 0;
+    private double violationLevel = 0;
     private TributeType type;
     private List<CheatType> cheats;
 
@@ -52,16 +52,16 @@ public class PlayerProfile {
         this.lastChat = lastChat;
     }
 
-    public int getViolationLevel() {
+    public double getViolationLevel() {
         return violationLevel;
     }
 
-    public void setViolationLevel(int violationLevel) {
+    public void setViolationLevel(double violationLevel) {
         this.violationLevel = violationLevel;
         updateVL();
     }
 
-    public void addViolationLevel(int violationLevel) {
+    public void addViolationLevel(double violationLevel) {
         setViolationLevel(getViolationLevel() + violationLevel);
     }
 

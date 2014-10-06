@@ -9,6 +9,7 @@ import org.bukkit.block.Block;
 import org.bukkit.entity.EntityType;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
+import org.bukkit.event.EventPriority;
 import org.bukkit.event.Listener;
 import org.bukkit.event.block.BlockBreakEvent;
 import org.bukkit.event.entity.EntityDamageByEntityEvent;
@@ -21,7 +22,15 @@ import sun.java2d.pipe.SpanShapeRenderer;
  */
 public class CheatListener implements Listener {
 
-    @EventHandler
+    @EventHandler(priority = EventPriority.LOW)
+    public void swearCheck(AsyncPlayerChatEvent event) {
+        Player player = event.getPlayer();
+        if (event.getMessage().contains("swear")) { // Pseudo
+            Core.getAntiCheat().warnPlayer(player, CheatType.SWEARING);
+        }
+    }
+
+    @EventHandler(priority = EventPriority.NORMAL)
     public void blockGlitchCheck(BlockBreakEvent event) {
         if (event.getPlayer() == null)
             return;
@@ -39,9 +48,6 @@ public class CheatListener implements Listener {
 
     @EventHandler
     public void spamCheck(AsyncPlayerChatEvent event) {
-        PlayerProfile profile = Core.getPlayerProfiles().get(event.getPlayer().getUniqueId());
-        if (profile.getType().isCheatProof())
-            return;
         Player player = event.getPlayer();
         long time = System.currentTimeMillis();
         long lastMessage = Core.getPlayerProfiles().get(player.getUniqueId()).getLastChat();

@@ -10,13 +10,14 @@ public enum CheatType {
     REACH(3, 2, "Reach"),
     REGEN(4, 2, "Regen"),
     FORCEFIELD(5, 2, "KillAura"),
-    BLOCKGLITCH(6, 1, "Block Glitching");
+    BLOCKGLITCH(6, 1, "Block Glitching"),
+    SWEARING(7, 0.5, "Swearing");
 
     private int id;
-    private int level;
+    private double level;
     private String displayName;
 
-    CheatType(int id, int level, String displayName) {
+    CheatType(int id, double level, String displayName) {
         this.id = id;
         this.level = level;
         this.displayName = displayName;
@@ -26,7 +27,7 @@ public enum CheatType {
         return id;
     }
 
-    public int getLevel() {
+    public double getLevel() {
         return level;
     }
 

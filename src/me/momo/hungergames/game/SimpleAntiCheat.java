@@ -13,7 +13,7 @@ public class SimpleAntiCheat {
     private static double reachDistance = 5d;
     private static double regenTimeBetweenHeals = 3.8*1000;
     private static double floodTime = 0.3 * 1000;
-    private static int maxVL = 8;
+    private static double maxVL = 8;
 
     public SimpleAntiCheat(Core core) {
         this.core = core;
@@ -41,7 +41,7 @@ public class SimpleAntiCheat {
         return floodTime;
     }
 
-    public static int getMaxVL() {
+    public static double getMaxVL() {
         return maxVL;
     }
 }
