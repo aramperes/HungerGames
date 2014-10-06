@@ -21,9 +21,17 @@ public class PlayerListener implements Listener {
         Player player = event.getPlayer();
         PlayerProfile profile = Core.getPlayerProfiles().get(player.getUniqueId());
         event.setCancelled(true);
-        for (PlayerProfile profiles : Core.getPlayerProfiles().values()) {
-            Bukkit.getPlayer(profile.getUniqueID()).sendMessage(profiles.getType().getPrefix() + event.getMessage());
+        if (!profile.getType().isAlive()) {
+            for (PlayerProfile profiles : Core.getPlayerProfiles().values()) {
+                if (!profiles.getType().isAlive())
+                    Bukkit.getPlayer(profile.getUniqueID()).sendMessage(profiles.getType().getPrefix() + event.getMessage());
+            }
+        } else {
+            for (PlayerProfile profiles : Core.getPlayerProfiles().values()) {
+                Bukkit.getPlayer(profile.getUniqueID()).sendMessage(profiles.getType().getPrefix() + event.getMessage());
+            }
         }
+
     }
 
     @EventHandler
