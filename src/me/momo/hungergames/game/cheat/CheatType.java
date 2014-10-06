@@ -6,7 +6,7 @@ package me.momo.hungergames.game.cheat;
 public enum CheatType {
     SPEED(0, 1, "Speed Hacking"),
     FLIGHT(1, 3, "Flight"),
-    SPAM(2, 1, "Spamming"),
+    SPAM(2, 1, "Flooding"),
     REACH(3, 2, "Reach"),
     REGEN(4, 2, "Regen"),
     FORCEFIELD(4, 2, "KillAura");

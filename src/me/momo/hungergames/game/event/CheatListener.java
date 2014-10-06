@@ -11,12 +11,30 @@ import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.entity.EntityDamageByEntityEvent;
 import org.bukkit.event.entity.EntityRegainHealthEvent;
+import org.bukkit.event.player.AsyncPlayerChatEvent;
 import sun.java2d.pipe.SpanShapeRenderer;
 
 /**
  * Contains events to listen for the Anti-Cheat class
  */
 public class CheatListener implements Listener {
+
+    @EventHandler
+    public void spamCheck(AsyncPlayerChatEvent event) {
+        Player player = event.getPlayer();
+        long time = System.currentTimeMillis();
+        long lastMessage = Core.getPlayerProfiles().get(player.getUniqueId()).getLastChat();
+        long chatTime = time-lastMessage;
+        if (lastMessage == -1) {
+            lastMessage = time - ((long)SimpleAntiCheat.getFloodTime()*2);
+        }
+        Core.getPlayerProfiles().get(player.getUniqueId()).setLastChat(time);
+
+        if (chatTime < SimpleAntiCheat.getFloodTime()) {
+            event.setCancelled(true);
+            Core.getAntiCheat().warnPlayer(player, CheatType.SPAM);
+        }
+    }
 
     @EventHandler
     public void reachCheck(EntityDamageByEntityEvent event) {

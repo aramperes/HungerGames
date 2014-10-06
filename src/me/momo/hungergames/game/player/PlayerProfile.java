@@ -14,6 +14,7 @@ public class PlayerProfile {
     private UUID uniqueID;
     private long lastHeal = -1;
     private long lastHit = -1;
+    private long lastChat = -1;
     private int violationLevel = 0;
     private List<CheatType> cheats;
 
@@ -40,6 +41,14 @@ public class PlayerProfile {
 
     public void setLastHit(int lastHit) {
         this.lastHit = lastHit;
+    }
+
+    public long getLastChat() {
+        return lastChat;
+    }
+
+    public void setLastChat(long lastChat) {
+        this.lastChat = lastChat;
     }
 
     public int getViolationLevel() {
@@ -76,7 +85,7 @@ public class PlayerProfile {
                     cheatMessage += cheats.get(i).getDisplayName();
                 }
             }
-            Bukkit.getPlayer(uniqueID).kickPlayer("§4You have been kicked for hacking (§6" + cheatMessage + "§4)." +
+            Bukkit.getPlayer(uniqueID).kickPlayer("§4You have been kicked for cheating (§6" + cheatMessage + "§4)." +
                     "\n§cModerators have been warned.");
         }
     }
