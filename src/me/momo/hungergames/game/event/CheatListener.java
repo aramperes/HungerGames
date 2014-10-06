@@ -5,10 +5,12 @@ import me.momo.hungergames.game.SimpleAntiCheat;
 import me.momo.hungergames.game.cheat.CheatType;
 import me.momo.hungergames.game.player.PlayerProfile;
 import org.bukkit.GameMode;
+import org.bukkit.block.Block;
 import org.bukkit.entity.EntityType;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
+import org.bukkit.event.block.BlockBreakEvent;
 import org.bukkit.event.entity.EntityDamageByEntityEvent;
 import org.bukkit.event.entity.EntityRegainHealthEvent;
 import org.bukkit.event.player.AsyncPlayerChatEvent;
@@ -20,7 +22,26 @@ import sun.java2d.pipe.SpanShapeRenderer;
 public class CheatListener implements Listener {
 
     @EventHandler
+    public void blockGlitchCheck(BlockBreakEvent event) {
+        if (event.getPlayer() == null)
+            return;
+        PlayerProfile profile = Core.getPlayerProfiles().get(event.getPlayer().getUniqueId());
+        if (profile.getType().isCheatProof())
+            return;
+        // if (Core.getAntiCheat.getAllowedBlocks().contains(event.getBlock.getType())
+        //     return;
+
+        if (Core.getPhaseManager().getCurrentPhase().getId() == 3) {
+            event.setCancelled(true);
+            Core.getAntiCheat().warnPlayer(event.getPlayer(), CheatType.BLOCKGLITCH);
+        }
+    }
+
+    @EventHandler
     public void spamCheck(AsyncPlayerChatEvent event) {
+        PlayerProfile profile = Core.getPlayerProfiles().get(event.getPlayer().getUniqueId());
+        if (profile.getType().isCheatProof())
+            return;
         Player player = event.getPlayer();
         long time = System.currentTimeMillis();
         long lastMessage = Core.getPlayerProfiles().get(player.getUniqueId()).getLastChat();
@@ -38,8 +59,14 @@ public class CheatListener implements Listener {
 
     @EventHandler
     public void reachCheck(EntityDamageByEntityEvent event) {
+
         if (event.getDamager().getType() == EntityType.PLAYER) {
+
             Player player = (Player) event.getDamager();
+
+            PlayerProfile profile = Core.getPlayerProfiles().get(player.getUniqueId());
+            if (profile.getType().isCheatProof())
+                return;
 
             if (player.getGameMode() == GameMode.CREATIVE)
                 return;
@@ -60,6 +87,9 @@ public class CheatListener implements Listener {
             return;
 
         Player player = (Player) event.getEntity(); // The player we are looking into
+        PlayerProfile profile = Core.getPlayerProfiles().get(player.getUniqueId());
+        if (profile.getType().isCheatProof())
+            return;
         long time = System.currentTimeMillis(); // The current time on the server
         long lastHeal = 0; // The last heal where the player regenerated
         lastHeal = Core.getPlayerProfiles().get(player.getUniqueId()).getLastHeal();

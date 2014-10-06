@@ -16,6 +16,7 @@ public class PlayerProfile {
     private long lastHit = -1;
     private long lastChat = -1;
     private int violationLevel = 0;
+    private TributeType type;
     private List<CheatType> cheats;
 
     public PlayerProfile(UUID uniqueID) {
@@ -88,5 +89,13 @@ public class PlayerProfile {
             Bukkit.getPlayer(uniqueID).kickPlayer("§4You have been kicked for cheating (§6" + cheatMessage + "§4)." +
                     "\n§cModerators have been warned.");
         }
+    }
+
+    public TributeType getType() {
+        return type;
+    }
+
+    public void setType(TributeType type) {
+        this.type = type;
     }
 }

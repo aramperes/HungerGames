@@ -7,6 +7,8 @@ import org.bukkit.entity.Player;
  */
 public interface Phase {
 
+
+
     /**
      * Represents the ID.
      *
