@@ -1,5 +1,8 @@
 package me.momo.hungergames.game.phase;
 
+import me.momo.hungergames.Core;
+import me.momo.hungergames.util.MsgUtil;
+import org.bukkit.ChatColor;
 import org.bukkit.entity.Player;
 
 /**
@@ -60,7 +63,8 @@ public class PhaseLive implements Phase {
 
     @Override
     public void startPhase() {
-
+        Core.sendGlobalMessage(ChatColor.DARK_GRAY + " [" + ChatColor.LIGHT_PURPLE + "Tributes" + ChatColor.DARK_GRAY + "] " + ChatColor.GREEN + ""
+                + ChatColor.BOLD + "THE GAMES HAVE BEGUN! " + ChatColor.DARK_GREEN + "GOOD LUCK TRIBUTES");
     }
 
     @Override

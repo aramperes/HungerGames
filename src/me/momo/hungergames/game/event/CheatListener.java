@@ -27,6 +27,7 @@ public class CheatListener implements Listener {
         Player player = event.getPlayer();
         if (event.getMessage().contains("swear")) { // Pseudo
             Core.getAntiCheat().warnPlayer(player, CheatType.SWEARING);
+            event.setCancelled(true);
         }
     }
 
@@ -46,7 +47,7 @@ public class CheatListener implements Listener {
         }
     }
 
-    @EventHandler
+    @EventHandler (priority = EventPriority.HIGH)
     public void spamCheck(AsyncPlayerChatEvent event) {
         Player player = event.getPlayer();
         long time = System.currentTimeMillis();

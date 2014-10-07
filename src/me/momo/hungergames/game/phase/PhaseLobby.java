@@ -1,6 +1,8 @@
 package me.momo.hungergames.game.phase;
 
 import me.momo.hungergames.Core;
+import me.momo.hungergames.util.MsgUtil;
+import org.bukkit.ChatColor;
 import org.bukkit.entity.Player;
 
 /**
@@ -79,6 +81,11 @@ public class PhaseLobby implements Phase {
             endPhase();
         } else {
             ticks++;
+            int timeLeft = MsgUtil.invertTime(getMaxTicks(), getTicks());
+            if ((timeLeft%15==0 || timeLeft < 10) && timeLeft > 0) {
+                Core.sendGlobalMessage(ChatColor.DARK_GRAY + " [" + ChatColor.YELLOW + "Time" + ChatColor.DARK_GRAY + "] " + ChatColor.RED + ""
+                        + ChatColor.BOLD + "LOBBY ENDING IN " + ChatColor.WHITE + MsgUtil.longTime(timeLeft).toUpperCase());
+            }
         }
     }
 }

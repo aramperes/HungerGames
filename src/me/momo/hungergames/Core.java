@@ -6,14 +6,13 @@ import me.momo.hungergames.game.event.CheatListener;
 import me.momo.hungergames.game.event.PhaseListener;
 import me.momo.hungergames.game.event.PlayerListener;
 import me.momo.hungergames.game.phase.PhaseLive;
-import me.momo.hungergames.game.phase.PhaseSettingUp;
 import me.momo.hungergames.game.player.PlayerProfile;
 import me.momo.hungergames.game.time.PulseTimer;
+import org.bukkit.Bukkit;
+import org.bukkit.entity.Player;
 import org.bukkit.plugin.java.JavaPlugin;
 
-import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
 import java.util.UUID;
 
 /**
@@ -59,5 +58,12 @@ public class Core extends JavaPlugin {
 
     public static HashMap<UUID, PlayerProfile> getPlayerProfiles() {
         return playerProfiles;
+    }
+
+    public static void sendGlobalMessage(String message) {
+        for (PlayerProfile profile : getPlayerProfiles().values()) {
+            Player player = Bukkit.getPlayer(profile.getUniqueID());
+            player.sendMessage(message);
+        }
     }
 }

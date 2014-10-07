@@ -9,8 +9,6 @@ import org.bukkit.scheduler.BukkitRunnable;
 public class PulseTimer extends BukkitRunnable {
     @Override
     public void run() {
-        if (Core.getPhaseManager().getCurrentPhase() != null) {
-            Core.getPhaseManager().getCurrentPhase().pulse();
-        }
+        Core.getPhaseManager().globalPulse();
     }
 }

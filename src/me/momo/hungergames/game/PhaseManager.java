@@ -2,6 +2,8 @@ package me.momo.hungergames.game;
 
 import me.momo.hungergames.Core;
 import me.momo.hungergames.game.phase.Phase;
+import me.momo.hungergames.util.MsgUtil;
+import org.bukkit.ChatColor;
 
 /**
  * Centralizes information and methods for phases.
@@ -16,6 +18,13 @@ public class PhaseManager {
 
     public Phase getCurrentPhase() {
         return currentPhase;
+    }
+
+    public void globalPulse() {
+        getCurrentPhase().pulse();
+        if (!getCurrentPhase().isInfinite()) {
+
+        }
     }
 
     public void setCurrentPhase(Phase currentPhase) {
