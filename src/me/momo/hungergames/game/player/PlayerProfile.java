@@ -78,7 +78,7 @@ public class PlayerProfile {
     }
 
     public void updateVL() {
-        if (violationLevel > SimpleAntiCheat.getMaxVL()) {
+        if (violationLevel >= SimpleAntiCheat.getMaxVL()) {
             String cheatMessage = "";
             for (int i = 0; i < cheats.size(); i++) {
                 if (i != (cheats.size() - 1)) {

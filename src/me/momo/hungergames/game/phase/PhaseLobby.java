@@ -82,7 +82,7 @@ public class PhaseLobby implements Phase {
         } else {
             ticks++;
             int timeLeft = MsgUtil.invertTime(getMaxTicks(), getTicks());
-            if ((timeLeft%15==0 || timeLeft < 10) && timeLeft > 0) {
+            if ((timeLeft%30==0 || timeLeft <= 10) && timeLeft > 0) {
                 Core.sendGlobalMessage(ChatColor.DARK_GRAY + " [" + ChatColor.YELLOW + "Time" + ChatColor.DARK_GRAY + "] " + ChatColor.RED + ""
                         + ChatColor.BOLD + "LOBBY ENDING IN " + ChatColor.WHITE + MsgUtil.longTime(timeLeft).toUpperCase());
             }

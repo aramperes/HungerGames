@@ -6,6 +6,7 @@ import me.momo.hungergames.game.event.CheatListener;
 import me.momo.hungergames.game.event.PhaseListener;
 import me.momo.hungergames.game.event.PlayerListener;
 import me.momo.hungergames.game.phase.PhaseLive;
+import me.momo.hungergames.game.phase.PhaseSettingUp;
 import me.momo.hungergames.game.player.PlayerProfile;
 import me.momo.hungergames.game.time.PulseTimer;
 import org.bukkit.Bukkit;
@@ -29,7 +30,7 @@ public class Core extends JavaPlugin {
         startPulseTimer();
         registerListeners();
         phaseManager = new PhaseManager(this);
-        phaseManager.setCurrentPhase(new PhaseLive());
+        phaseManager.setCurrentPhase(new PhaseSettingUp());
         antiCheat = new SimpleAntiCheat(this);
     }
 

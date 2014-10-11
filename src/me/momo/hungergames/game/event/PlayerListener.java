@@ -2,6 +2,7 @@ package me.momo.hungergames.game.event;
 
 import me.momo.hungergames.Core;
 import me.momo.hungergames.game.player.PlayerProfile;
+import me.momo.hungergames.game.player.TributeType;
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
@@ -24,7 +25,7 @@ public class PlayerListener implements Listener {
         if (!profile.getType().isAlive()) {
             for (PlayerProfile profiles : Core.getPlayerProfiles().values()) {
                 if (!profiles.getType().isAlive())
-                    Bukkit.getPlayer(profile.getUniqueID()).sendMessage(profiles.getType().getPrefix() + event.getMessage());
+                    Bukkit.getPlayer(profile.getUniqueID()).sendMessage(profiles.getType().getPrefix() + " " + player.getDisplayName() + "§8:§r " + event.getMessage());
             }
         } else {
             for (PlayerProfile profiles : Core.getPlayerProfiles().values()) {
@@ -38,6 +39,7 @@ public class PlayerListener implements Listener {
     public void onPlayerJoin(PlayerJoinEvent event) {
         if (!Core.getPlayerProfiles().containsKey(event.getPlayer().getUniqueId())) {
             PlayerProfile profile = new PlayerProfile(event.getPlayer().getUniqueId());
+            profile.setType(TributeType.ALIVE);
             Core.getPlayerProfiles().put(event.getPlayer().getUniqueId(), profile);
         }
     }
